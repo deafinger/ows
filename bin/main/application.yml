@@ -1,0 +1,14 @@
+server:
+    port: 9090
+spring:
+    profiles:
+        active: dev
+    logging:
+            file: logs/application.log
+            level:
+                org.thymeleaf: INFO
+                org.springframework.web: INFO
+                org.hibernate.SQL: INFO
+                org.quartz.core: INFO
+                org.h2.server.web: INFO
+            config: classpath:logback-spring.xml          
