@@ -5,6 +5,7 @@
 *.log
 
 # gradle
+.gradle
 *.bin
 *.lock
 # BlueJ files
