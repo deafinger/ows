@@ -71,8 +71,6 @@ public class MapToBodyElement {
 					if(node.getValue().equals("")) {
 						this.parent.appendChild(this.doc.createTextNode("\n"));
 					}else {
-						String text = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, node.getValue().toString());
-						log.info(text);
 						this.parent.appendChild(
 								this.doc.createTextNode( 
 												node.getValue().toString()
@@ -81,7 +79,8 @@ public class MapToBodyElement {
 					}
 				}else {
 					//parent Attribute
-					this.parent.setAttribute(node.getKey(), node.getValue().toString());
+					String text = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, node.getKey());
+					this.parent.setAttribute(text, node.getValue().toString());
 				}
 			}
 		}
