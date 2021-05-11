@@ -150,19 +150,18 @@ public class OWSXmlCommon {
         //request 
         soapMsg.writeTo(out);
 		String request = new String(out.toByteArray());
-		log.info("Request : {}", request);
+		log.info("Soap Request : {}", request);
 		
 		//connection
 		SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
         SOAPConnection soapConnection = soapConnectionFactory.createConnection();
         
         SOAPMessage soapResponse = soapConnection.call(soapMsg, soapUrl);
-
         // Print the SOAP Response
         ByteArrayOutputStream resout = new ByteArrayOutputStream();
         soapResponse.writeTo(resout);
         String response = new String(resout.toByteArray());
-//        log.info("response : {} ", response);
+        log.info("Soap Response : {} ", response);
 		return soapResponse;
 	}
 }

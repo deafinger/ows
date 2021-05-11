@@ -2,6 +2,7 @@ package com.api.ows.reservation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,7 @@ public class FutureBookingSummaryController {
 	* @author 서민재
 	*/
 	@PostMapping(path = "/future")
-	public ResponseEntity<?> futureBookingSummaryRequest(@RequestBody FutureBookingSummaryReqVO param) throws Exception{
+	public ResponseEntity<?> futureBookingSummaryRequest(@RequestBody @Validated FutureBookingSummaryReqVO param) throws Exception{
 		log.info("PATH :/reservation/future ");
 		return ResponseEntity.ok().body(service.doFutureBookingSummaryRequest(param));
 	}
