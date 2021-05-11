@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @Class FutureBookingSummaryReqVO.java
- * @Description : 
+ * @Description : FutureBookingSummary Request VO 
  * @
  * @ 수정일      	     수정자           수정내용
  * @ ---------  	 ---------   	-------------------------------

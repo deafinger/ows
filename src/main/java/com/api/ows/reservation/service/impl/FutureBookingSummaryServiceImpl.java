@@ -23,6 +23,20 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @Class FutureBookingSummaryServiceImpl
+ * @Description : FutureBookingSummary Logic 구현
+ * @
+ * @ 수정일      	     수정자           수정내용
+ * @ ---------  	 ---------   	-------------------------------
+ * @ 2021. 5. 11.     서민재     		최초생성
+ *
+ * @author 서민재
+ * @since 2021. 5. 11.
+ * @version 1.0
+ *
+ *  Copyright (주)아임게이트
+ */
 @Slf4j
 @Service
 public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryService {

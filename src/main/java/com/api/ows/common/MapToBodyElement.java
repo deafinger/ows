@@ -18,6 +18,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @Class MapToBodyElement
+ * @Description : Map의 값을 Soap Body Element 구조로 바꾸는 공통
+ * @
+ * @ 수정일      	     수정자           수정내용
+ * @ ---------  	 ---------   	-------------------------------
+ * @ 2021. 5. 11.     서민재     		최초생성
+ *
+ * @author 서민재
+ * @since 2021. 5. 11.
+ * @version 1.0
+ *
+ *  Copyright (주)아임게이트
+ */
 @Slf4j
 @Getter
 @Setter
@@ -27,13 +41,17 @@ public class MapToBodyElement {
 	private Element parent;
 	private Document doc;
 	
-	//child Json �쓣 諛쏆쓣�븣 �깮�꽦�옄
 	public MapToBodyElement(Document doc, Element parent) {
 		this.doc = doc;
 		this.parent = parent;
 	}
 	
-	//理쒖큹 JSon 諛쏆쓣�떆 
+	/**
+	* @Description : 최초 호출용 Method
+	* @param  Map<String, Object>
+	* @return List<Element>
+	* @author 서민재
+	*/
 	public List<Element> firstMap(Map<String, Object> param) throws Exception{
 		
 		List<Element> result = new ArrayList<Element>();
@@ -52,7 +70,12 @@ public class MapToBodyElement {
 		return result;
 	}
 	
-	//Convert 
+	/**
+	* @Description : 최초호출용 Method에서 호출하는 Method
+	* @param  Map<String,Object>
+	* @return Element
+	* @author 서민재
+	*/
 	public Element doNext(Map<String,Object> child){
 		// this.keyName value 
 		Set entry = child.entrySet();

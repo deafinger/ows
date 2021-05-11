@@ -17,9 +17,30 @@ import com.github.underscore.lodash.*;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @Class OWSSoapConnection
+ * @Description : Xml을 조합하여 Soap 통신하는 공통 클래스 
+ * @
+ * @ 수정일      	     수정자           수정내용
+ * @ ---------  	 ---------   	-------------------------------
+ * @ 2021. 5. 11.     서민재     		최초생성
+ *
+ * @author 서민재
+ * @since 2021. 5. 11.
+ * @version 1.0
+ *
+ *  Copyright (주)아임게이트
+ */
 @Slf4j
 @NoArgsConstructor
 public class OWSSoapConnection {
+	
+	/**
+	* @Description : Soap 통신 호출 Method
+	* @param  Map<String, Object> , String 
+	* @return Map<String,Object>
+	* @author 서민재
+	*/
 	public Map<String, Object> doSoapConnection(Map<String, Object> param, String soapAction) throws Exception {
 		// Body Document
 		MapToBodyElement converter = new MapToBodyElement(new CreateDocument().createDoc(), null);

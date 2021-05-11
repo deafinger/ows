@@ -17,6 +17,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
+/**
+ * @Class OWSXmlCommon
+ * @Description : Header등 공통 구조 Xml builder 및 Response 구조 변환 Return 공통 클래스 
+ * @
+ * @ 수정일      	     수정자           수정내용
+ * @ ---------  	 ---------   	-------------------------------
+ * @ 2021. 5. 11.     서민재     		최초생성
+ *
+ * @author 서민재
+ * @since 2021. 5. 11.
+ * @version 1.0
+ *
+ *  Copyright (주)아임게이트
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,6 +38,13 @@ import org.w3c.dom.Element;
 public class OWSXmlCommon {
 	private Document doc;
 	private List<Element> elements;
+	
+	/**
+	* @Description : 공통적 구조인 Header Build Method 
+	* @param  None
+	* @return Document
+	* @author 서민재
+	*/
 	public Document getSoapXml() throws Exception{
 		doc.setXmlStandalone(true); //standalone="no" 
         
@@ -98,6 +119,13 @@ public class OWSXmlCommon {
 
 		return doc;
 	}
+	
+	/**
+	* @Description : Soap 통신 설정 및 통신 Request, Response  부분
+	* @param  Document, String 
+	* @return SOAPMessage
+	* @author 서민재
+	*/
 	public SOAPMessage getResponseSoap(Document doc,String actionTag) throws Exception{
 		String soapUrl = "http://ec2-52-78-184-230.ap-northeast-2.compute.amazonaws.com:8080/ows_ws_51/Reservation.asmx";
 		String soapAction = "http://webservices.micros.com/ows/5.1" + actionTag;

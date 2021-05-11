@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @Class FutureBookingSummaryBody.java
- * @Description : 
+ * @Description : FutureBookingSummary Request Body Model
  * @
  * @ 수정일      	     수정자           수정내용
  * @ ---------  	 ---------   	-------------------------------

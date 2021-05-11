@@ -22,24 +22,40 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 
+/**
+ * @Class SoapResponseJsonToMap
+ * @Description : SoapResponse 의  공통 Attribute 제거 및 Map 전환
+ * @
+ * @ 수정일      	     수정자           수정내용
+ * @ ---------  	 ---------   	-------------------------------
+ * @ 2021. 5. 11.     서민재     		최초생성
+ *
+ * @author 서민재
+ * @since 2021. 5. 11.
+ * @version 1.0
+ *
+ *  Copyright (주)아임게이트
+ */
 @Slf4j
 @Getter
 @Setter
 @NoArgsConstructor
 public class SoapResponseJsonToMap {
 
+	
 	/**
-	 * 怨듯넻 Attribute 吏��슦湲�
-	 * @author �꽌誘쇱옱
-	 *
-	 */
+	* @Description : 공통 Attribute 제거 
+	* @param  Map<String, Object> , String 
+	* @return Map<String,Object>
+	* @author 서민재
+	*/
 	public Map<String, Object> removeCommonAttribute(Map<String, Object> source, String parentKey) {
-		// Data �떞湲�
+	
 		Set entry = source.entrySet();
-		//java.util.ConcurrentModificationException 愿�怨꾨줈  Vector濡� �옱洹� �닔�뻾
+	
 		Vector<String> removeList = new Vector<String>();
 		Vector<String> objectList = new Vector<String>();
-		//Iterator 濡� 嫄곕Ⅴ湲� �떎�뻾
+	
 		Iterator it = entry.iterator();
 		while(it.hasNext()) {
 			Map.Entry<String, Object> entryMap =(Map.Entry<String, Object>) it.next();
@@ -73,7 +89,13 @@ public class SoapResponseJsonToMap {
 		}
 		return source;
 	}
-	//ListType Data 諛섑솚
+	
+	/**
+	* @Description : ListType 분기 처리 Method
+	* @param  List 
+	* @return List
+	* @author 서민재
+	*/
 	public List doArrayList( List source){
 		List after = new ArrayList();
 		for(int i = 0; i<source.size();i++) {
@@ -86,19 +108,17 @@ public class SoapResponseJsonToMap {
 		}
 		return source;
 	}
-	//body 媛��졇�삤湲�
+	
 	public Map<String, Object> getBody(Map<String, Object> source){
 		Set<String> keys = source.keySet();
 		Map<String, Object> result = null;
-		//Key 濡�  forEach
 		for(String key : keys) {
 			Object value = source.get(key);
-			//Map�씤寃쎌슦
 			if(value instanceof Map) {
-				if(key.equals("soap:Body")) { // Map�씤�뜲 Key媛� Body �씪 寃쎌슦
+				if(key.equals("soap:Body")) { 
 					result = (Map<String, Object>)value;
 					break;
-				}else {// Map�씤�뜲 Key媛� Body �븘�땺 寃쎌슦
+				}else {
 					result = new SoapResponseJsonToMap().getBody((Map<String, Object>)value);
 				}
 			}else {
