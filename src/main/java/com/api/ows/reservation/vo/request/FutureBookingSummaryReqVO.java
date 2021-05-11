@@ -1,6 +1,14 @@
 package com.api.ows.reservation.vo.request;
 
+
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 /**
@@ -18,8 +26,13 @@ import lombok.Data;
  *  Copyright (주)아임게이트
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class FutureBookingSummaryReqVO {
+	@NotNull(message = "ID는 필수입력 사항입니다.")
 	private String nameId; //profile ID
+	@Max(value = 1,message = "test")
 	private String startDate; //profile ID
 	private String endDate; //profile ID
+	
 }
