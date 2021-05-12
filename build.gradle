@@ -31,27 +31,30 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+	// Tymeleaf
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.5'
 	
-	// runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	// annotation
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation
+	
+	// Validation
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.5'
-	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
+	
+	// Aop
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.4.5'
 	
+	//Server
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
-	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	// SimpleJson
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+
+	// Gson
 	implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.5'
-	// https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api
-	implementation group: 'javax.xml.soap', name: 'javax.xml.soap-api', version: '1.4.0'
-	// https://mvnrepository.com/artifact/com.sun.xml.messaging.saaj/saaj-impl
+
+	// Saaj (Soap)
 	implementation group: 'com.sun.xml.messaging.saaj', name: 'saaj-impl', version: '2.0.0'
 
 	// https://mvnrepository.com/artifact/org.glassfish.metro/webservices-rt
@@ -60,12 +63,10 @@ dependencies {
 	implementation group: 'org.glassfish.metro', name: 'webservices-api', version: '3.0.0'
 	
 	
-	// https://mvnrepository.com/artifact/com.github.javadev/underscore-lodash
+	// Lodash
 	implementation group: 'com.github.javadev', name: 'underscore', version: '1.65'
-	// https://mvnrepository.com/artifact/com.google.guava/guava
+	// Guava
 	implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
-	
-	
 	
 }
 

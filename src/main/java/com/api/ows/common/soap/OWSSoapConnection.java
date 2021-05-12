@@ -1,4 +1,4 @@
-package com.api.ows.common;
+package com.api.ows.common.soap;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;

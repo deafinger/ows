@@ -2,13 +2,21 @@ package com.api.ows.reservation.vo.request;
 
 
 
+import java.util.Date;
+
 import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 /**
@@ -26,13 +34,24 @@ import lombok.NoArgsConstructor;
  *  Copyright (주)아임게이트
  */
 @Data
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class FutureBookingSummaryReqVO {
-	@NotNull(message = "ID는 필수입력 사항입니다.")
-	private String nameId; //profile ID
-	@Max(value = 1,message = "test")
-	private String startDate; //profile ID
-	private String endDate; //profile ID
+	private	String	nameId	;	//	# nameId : 고객 아이디,
+	
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyyMMdd")
+	@DateTimeFormat(pattern = "yyyyMMdd")
+	private	Date startDate	;	//	# startDate : 에약 시작 날짜, 데이터 형식은: 날짜
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyyMMdd")
+	@DateTimeFormat(pattern = "yyyyMMdd")
+	private	Date  endDate	;	//	# endDate : 예약 만료 날짜, 데이터 형식은: 날짜
+	
+	private	String	lastName	;	//	# lastName : 성
+	private	String	firstName	;	//	# firstName : 이름
+	private	String	confirmationId	;	//	# confirmationId : 고객, 스태프가 확인 가능한 예약 번호
+	private	String	hotelCode	;	//	# hotelCode : 호텔 코드
+	private	String	chainCode	;	//	# chainCode : 호텔 체인 코드
+
 	
 }

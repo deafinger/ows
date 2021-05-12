@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class AdditionalFilters {
-	private CreationDate CreationDate;
+public class QueryDateRange {
+	private String dataType;
+	private StartDate StartDate;
+	private EndDate EndDate;
 	private String xmlns;
 }
