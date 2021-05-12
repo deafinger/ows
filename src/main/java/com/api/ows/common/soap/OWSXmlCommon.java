@@ -1,4 +1,4 @@
-package com.api.ows.common;
+package com.api.ows.common.soap;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -50,17 +50,16 @@ public class OWSXmlCommon {
         
         // soap:Envelope Element 
         Element soapEnvelop = doc.createElement("soap:Envelope");
-        soapEnvelop.setAttribute("xmlns:soap", "http://schemas.xmlsoap.org/soap/envelope/");
-        soapEnvelop.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-        soapEnvelop.setAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
-//        soapEnvelop.setAttribute("xmlns:soap","http://schemas.xmlsoap.org/soap/envelope/"       );
-//        soapEnvelop.setAttribute("xmlns:xsi","http://www.w3.org/2001/XMLSchema-instance"        );
-//        soapEnvelop.setAttribute("xmlns:c","http://webservices.micros.com/og/4.3/Common/"       );
-//        soapEnvelop.setAttribute("xmlns:xsd","http://www.w3.org/2001/XMLSchema"                 );
-//        soapEnvelop.setAttribute("xmlns:r","http://webservices.micros.com/og/4.3/Reservation/"  );
-//        soapEnvelop.setAttribute("xmlns:hc","http://webservices.micros.com/og/4.3/HotelCommon/" );
-//        soapEnvelop.setAttribute("xmlns:n","http://webservices.micros.com/og/4.3/Name/"         );
-//        soapEnvelop.setAttribute("xmlns:m","http://webservices.micros.com/og/4.3/Membership/"	);
+        soapEnvelop.setAttribute("xmlns:soap","http://schemas.xmlsoap.org/soap/envelope/"           );
+        soapEnvelop.setAttribute("xmlns:xsi","http://www.w3.org/2001/XMLSchema-instance"            );
+        soapEnvelop.setAttribute("xmlns:s2","http://webservices.micros.com/og/4.3/Name/"            );
+        soapEnvelop.setAttribute("xmlns:s5","http://webservices.micros.com/og/4.3/Membership/"      );
+        soapEnvelop.setAttribute("xmlns:s3","http://webservices.micros.com/og/4.3/HotelCommon/"     );
+        soapEnvelop.setAttribute("xmlns:tns","http://tempuri.org/"                                  );
+        soapEnvelop.setAttribute("xmlns:s4","http://webservices.micros.com/og/4.3/Core/"            );
+        soapEnvelop.setAttribute("xmlns:s0","http://webservices.micros.com/ows/5.1/Name.wsdl"       );
+        soapEnvelop.setAttribute("xmlns:s1","http://webservices.micros.com/og/4.3/Common/"          );
+        soapEnvelop.setAttribute("xmlns:tm","http://microsoft.com/wsdl/mime/textMatching/"			);
         doc.appendChild(soapEnvelop);
         
         //<soap:Header>

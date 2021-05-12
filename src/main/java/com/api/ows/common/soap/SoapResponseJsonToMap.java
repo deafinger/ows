@@ -1,4 +1,4 @@
-package com.api.ows.common;
+package com.api.ows.common.soap;
 
 import lombok.Setter;
 

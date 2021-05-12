@@ -1,4 +1,4 @@
-package com.api.ows.common;
+package com.api.ows.common.soap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

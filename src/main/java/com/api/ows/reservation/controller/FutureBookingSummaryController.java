@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.ows.common.ValidationErrorsMessage;
+import com.api.ows.common.utill.ValidationErrorsMessage;
 import com.api.ows.reservation.service.FutureBookingSummaryService;
 import com.api.ows.reservation.vo.request.FutureBookingSummaryReqVO;
 

@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class CreationDate {
 	private StartDate StartDate;
 	private EndDate EndDate;
+	private String xmlns;
 }

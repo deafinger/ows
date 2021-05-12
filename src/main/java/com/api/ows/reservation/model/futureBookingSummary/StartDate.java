@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class StartDate {
 	private String nodeValue;
+	private String xmlns;
 }

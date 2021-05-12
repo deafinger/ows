@@ -1,4 +1,4 @@
-package com.api.ows.common;
+package com.api.ows.common.soap;
 
 import java.util.ArrayList;
 import java.util.Iterator;
