@@ -13,13 +13,21 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	
 }
 
 repositories {
 	mavenCentral()
 }
 
+
+
 dependencies {
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
