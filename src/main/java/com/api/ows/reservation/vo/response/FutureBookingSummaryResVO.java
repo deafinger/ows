@@ -28,8 +28,6 @@ public class FutureBookingSummaryResVO {
 	private	String	confirmationId	;	//	# confirmationId : 고객, 스태프가 확인 가능한 예약 번호
 	private	String	reservNameId	;	//	# reservNameId : 시스템 에약 고유 번호
 	private	String	roomNumber	;	//	# roomNumber : 예약에 할당된 방 번호
-	private	String	chainCode	;	//	# chainCode : 호텔 체인 코드
-	private	String	hotelCode	;	//	# hotelCode : 호텔 코드 
 	private	String	hotelReference 	;	//	# hotelReference  : 호텔명
 	private	String	firstName	;	//	# firstName : 이름
 	private	String	lastName	;	//	# lastName : 성

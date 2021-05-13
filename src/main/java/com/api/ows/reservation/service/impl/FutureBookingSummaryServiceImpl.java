@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.AttributeNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,13 +62,13 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 		Map<String,Object> soapResultMap = con.doSoapConnection(bodyMap, "/Reservation.wsdl#FutureBookingSummary");
 		Map<String,Object> status = U.get(soapResultMap, "FutureBookingSummaryResponse.Result");
 		
+		log.info("status : {}",status );
 		List<FutureBookingSummaryResVO> voList = new ArrayList<>();
 		//Vo 담기
 		if(status.get("-resultStatusFlag").equals(CommonString.SUCESS)) { // soap result 코드 확인
 			
 			Object reservations = U.get(soapResultMap, "FutureBookingSummaryResponse.HotelReservations.r:HotelReservation");
 			if(reservations instanceof List) {
-				log.info("reservations List : {}",reservations.getClass());
 				List<Object> infos = (List)reservations;
 				for(Object info  : infos) {
 					voList.add(setVO(info));
@@ -76,7 +77,7 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 				voList.add(setVO(reservations));
 			}
 		}else {
-			throw new Exception("OPMS DATA EXCEPTION", null);
+			throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
 		}
 		Map<String, Object> result = new HashMap<String,Object>();
 		result.put("reservationList",voList );

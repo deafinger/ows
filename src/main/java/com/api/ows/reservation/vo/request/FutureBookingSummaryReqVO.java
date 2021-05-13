@@ -47,8 +47,6 @@ public class FutureBookingSummaryReqVO {
 	@DateTimeFormat(pattern = "yyyyMMdd")
 	private	Date  endDate	;	//	# endDate : 예약 만료 날짜, 데이터 형식은: 날짜
 	
-	private	String	lastName	;	//	# lastName : 성
-	private	String	firstName	;	//	# firstName : 이름
 	private	String	confirmationId	;	//	# confirmationId : 고객, 스태프가 확인 가능한 예약 번호
 	private	String	hotelCode	;	//	# hotelCode : 호텔 코드
 	private	String	chainCode	;	//	# chainCode : 호텔 체인 코드

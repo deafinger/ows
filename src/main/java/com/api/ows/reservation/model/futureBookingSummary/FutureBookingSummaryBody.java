@@ -37,8 +37,6 @@ import lombok.extern.slf4j.Slf4j;
 public class FutureBookingSummaryBody {
 	
 	private String xmlns; // # xmlns : 고유 Attribute
-	private LastName LastName; 	
-	private FirstName FirstName;
 	private NameID NameID;
 	private AdditionalFilters AdditionalFilters;
 	private QueryDateRange QueryDateRange;
@@ -52,10 +50,6 @@ public class FutureBookingSummaryBody {
 		this.xmlns = CommonString.RESVWSDL;
 		// NameID
 		this.NameID = (param.getNameId()==null)?null:new NameID().builder().type(CommonString.TYPEIN).nodeValue(param.getNameId()).build();
-		// LastName
-		this.LastName =(param.getLastName()==null)?null:new LastName().builder().nodeValue(param.getLastName()).build();
-		// FirstName
-		this.FirstName = (param.getFirstName()==null)?null:new FirstName().builder().nodeValue(param.getFirstName()).build();
 		
 		EndDate ed = (param.getEndDate()==null)?null:new EndDate(CommonUtill.jodaDateFormat(param.getEndDate(), CommonString.TBetween),CommonString.HOTELLCOMMON);
 		StartDate sd = (param.getStartDate()==null)?null:new StartDate(CommonUtill.jodaDateFormat(param.getStartDate(), CommonString.TBetween),CommonString.HOTELLCOMMON);
@@ -73,7 +67,7 @@ public class FutureBookingSummaryBody {
 		ConfirmationNumber cfn = (param.getConfirmationId()==null)?null
 									:new ConfirmationNumber(CommonString.RESERVATION,CommonString.TYPEIN ,param.getConfirmationId());
 		HotelReference hrf = (param.getChainCode()==null ||param.getHotelCode()==null) ? null
-									:new HotelReference(CommonString.RESERVATION, param.getChainCode(), param.getHotelCode());
+									:new HotelReference(CommonString.RESERVATION,  param.getHotelCode(),param.getChainCode());
 		boolean nothing = (cfn != null || hrf!=null);
 		if(nothing) {
 			this.AdditionalFilters = new AdditionalFilters().builder()
