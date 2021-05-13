@@ -23,12 +23,14 @@ import lombok.Data;
 public class CommonString {
 	/* ################################ DATEFORMAT START #################################### */
 	public static final String TZBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-	public static final String TBetween = "yyyy-MM-dd'T'HH:mm:ssSSS'00 'Z";
+	public static final String TBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'00'ZZ";
 	/* ################################ DATEFORMAT END #################################### */
 	
 	
 	/* ################################ TYPE START #################################### */
 	public static final String ARRIVALDATE = "ARRIVAL_DATE";
+	public static final String TYPEIN = "INTERNAL";
+	public static final String TYPEEX = "EXTERNAL";
 	/* ################################ TYPE END #################################### */
 	
 	/* ################################ XMLNS START #################################### */
@@ -41,4 +43,10 @@ public class CommonString {
 	public static final String CORE 		= "http://webservices.micros.com/og/4.3/Core/"             ;
 	public static final String HOUSE 		= "http://webservices.micros.com/og/4.3/HouseKeeping/"     ;
 	/* ################################ XMLNS END #################################### */
+	
+	
+	//Result status 
+	public static final String SUCESS 		= "SUCCESS"     ;
+	public static final String ADULT 		= "ADULT"     ;
+	public static final String CHILD 		= "CHILD"     ;
 }
