@@ -36,14 +36,14 @@ public class FutureBookingSummaryResVO {
 	private	String	roomTypeCode	;	//	# roomTypeCode : 룸 타입 코드
 	private	String	roomTypeDescription	;	//	# roomTypeDescription : 룸 타입 설명
 	private	String	reservationStatus	;	//	# reservationStatus : 예약 상태
-	private	String	startDate 	;	//	# startDate  : 예약 시작 시각
-	private	String	endDate	;	//	# endDate : 예약 종료 시각
+	private	String	startDate 	;	//	# startDate  : 예약 시작 시각 (yyyy-MM-dd'T'HH:mm:ss:SS)
+	private	String	endDate	;	//	# endDate : 예약 종료 시각	(yyyy-MM-dd'T'HH:mm:ss:SS)
 	private	String	adult	;	//	# adult : 어른 수
 	private	String	child	;	//	# child : 아이 수
 	private	String	nameId	;	//	# nameId : 예약자고객 고유 번호
 	private	String	phone	;	//	# phone : 휴대폰 번호
 	private	String	email	;	//	# email : 이메일 번호
-	private	String	rph	;	//	# rph : Guest Rph
+	private	String	rph	;	//	# rph : Guest Rph Number
 	private	String	legNumber	;	//	# legNumber : OPMS Reservation Sequence
 	private	String	roomClass	;	//	# roomClass	: Room Class
 }

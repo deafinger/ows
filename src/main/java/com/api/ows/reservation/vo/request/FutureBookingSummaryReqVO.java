@@ -42,10 +42,10 @@ public class FutureBookingSummaryReqVO {
 	
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyyMMdd")
 	@DateTimeFormat(pattern = "yyyyMMdd")
-	private	Date startDate	;	//	# startDate : 에약 시작 날짜, 데이터 형식은: 날짜
+	private	Date startDate	;	//	# startDate : 에약 시작 날짜, 데이터 형식은: yyyyMMdd
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyyMMdd")
 	@DateTimeFormat(pattern = "yyyyMMdd")
-	private	Date  endDate	;	//	# endDate : 예약 만료 날짜, 데이터 형식은: 날짜
+	private	Date  endDate	;	//	# endDate : 예약 만료 날짜, 데이터 형식은: yyyyMMdd
 	
 	private	String	confirmationId	;	//	# confirmationId : 고객, 스태프가 확인 가능한 예약 번호
 	private	String	hotelCode	;	//	# hotelCode : 호텔 코드
