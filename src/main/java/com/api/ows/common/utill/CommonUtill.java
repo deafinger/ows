@@ -43,10 +43,18 @@ public class CommonUtill {
 		return formatter.print(to);
 	}
 	
-	public static Object pathMapGet(Map map, String path) {
+	public static Object pathMapGetObj(Map map, String path) {
 		try {
 			Object result = U.get(map, path);
 			return result;
+		} catch (NullPointerException e) {
+			return null;
+		} 
+	}
+	public static String pathMapGetString(Map map, String path) {
+		try {
+			Object result = U.get(map, path);
+			return result.toString();
 		} catch (NullPointerException e) {
 			return null;
 		} 
