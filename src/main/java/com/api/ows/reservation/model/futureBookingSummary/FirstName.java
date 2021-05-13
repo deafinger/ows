@@ -6,14 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryDateRange {
-	private String dataType;
-	private String xmlns;
-	
-	private StartDate StartDate;
-	private EndDate EndDate;
-	
+@Builder
+public class FirstName {
+	private String nodeValue;
 }

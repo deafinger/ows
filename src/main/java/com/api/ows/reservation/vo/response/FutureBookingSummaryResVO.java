@@ -1,5 +1,10 @@
 package com.api.ows.reservation.vo.response;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * @Class FutureBookingSummaryResVO
  * @Description : FutureBookingSummary Return용 VO 
@@ -14,6 +19,33 @@ package com.api.ows.reservation.vo.response;
  *
  *  Copyright (주)아임게이트
  */
-public class FutureBookingSummaryResVO {
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class FutureBookingSummaryResVO {
+	private	String	confirmationId	;	//	# confirmationId : 고객, 스태프가 확인 가능한 예약 번호
+	private	String	reservNameId	;	//	# reservNameId : 시스템 에약 고유 번호
+	private	String	roomNumber	;	//	# roomNumber : 예약에 할당된 방 번호
+	private	String	chainCode	;	//	# chainCode : 호텔 체인 코드
+	private	String	hotelCode	;	//	# hotelCode : 호텔 코드 
+	private	String	hotelReference 	;	//	# hotelReference  : 호텔명
+	private	String	firstName	;	//	# firstName : 이름
+	private	String	lastName	;	//	# lastName : 성
+	private	String	ratePlanCode	;	//	# ratePlanCode : 객실 이용 플랜 코드
+	private	String	ratePlanDescription	;	//	# ratePlanDescription : 객식 이용 플랜 설명
+	private	String	roomTypeCode	;	//	# roomTypeCode : 룸 타입 코드
+	private	String	roomTypeDescription	;	//	# roomTypeDescription : 룸 타입 설명
+	private	String	reservationStatus	;	//	# reservationStatus : 예약 상태
+	private	String	startDate 	;	//	# startDate  : 예약 시작 시각
+	private	String	endDate	;	//	# endDate : 예약 종료 시각
+	private	String	adult	;	//	# adult : 어른 수
+	private	String	child	;	//	# child : 아이 수
+	private	String	nameId	;	//	# nameId : 예약자고객 고유 번호
+	private	String	phone	;	//	# phone : 휴대폰 번호
+	private	String	email	;	//	# email : 이메일 번호
+	private	String	rph	;	//	# rph : Guest Rph
+	private	String	legNumber	;	//	# legNumber : OPMS Reservation Sequence
+	private	String	roomClass	;	//	# roomClass	: Room Class
 }

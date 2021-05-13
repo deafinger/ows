@@ -11,6 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class AdditionalFilters {
-	private CreationDate CreationDate;
 	private String xmlns;
+	private String GetList;
+	private String ReservationDisposition;
+	private String RoomClass;
+	
+	private ConfirmationNumber ConfirmationNumber;
+	private HotelReference HotelReference;
+	private CreationDate CreationDate;
 }

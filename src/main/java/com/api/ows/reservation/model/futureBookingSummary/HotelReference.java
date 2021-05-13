@@ -6,14 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class QueryDateRange {
-	private String dataType;
+@Builder
+public class HotelReference {
+	
 	private String xmlns;
-	
-	private StartDate StartDate;
-	private EndDate EndDate;
-	
+	private String chainCode;
+	private String hotelCode;
+
 }
