@@ -2,18 +2,14 @@ package com.api.ows.reservation.vo.request;
 
 
 
+import java.lang.reflect.Field;
 import java.util.Date;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -50,6 +46,16 @@ public class FutureBookingSummaryReqVO {
 	private	String	confirmationId	;	//	# confirmationId : 고객, 스태프가 확인 가능한 예약 번호
 	private	String	hotelCode	;	//	# hotelCode : 호텔 코드
 	private	String	chainCode	;	//	# chainCode : 호텔 체인 코드
-
 	
+    public boolean isNull() throws IllegalArgumentException, IllegalAccessException {
+        Field fields[] = this.getClass().getDeclaredFields();
+        for (Field f : fields) {
+        	Object obj = f.get(this);
+           if(obj!=null) {
+        	   return false;
+           }
+        }
+        return true;
+
+    }
 }

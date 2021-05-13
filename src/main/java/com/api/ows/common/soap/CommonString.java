@@ -33,6 +33,7 @@ public class CommonString {
 	public static final String TYPEEX = "EXTERNAL";
 	/* ################################ TYPE END #################################### */
 	
+	
 	/* ################################ XMLNS START #################################### */
 	public static final String RESVWSDL		= "http://webservices.micros.com/ows/5.1/Reservation.wsdl" ;
 	public static final String HOTELLCOMMON = "http://webservices.micros.com/og/4.3/HotelCommon/"      ;
@@ -47,6 +48,7 @@ public class CommonString {
 	
 	//Result status 
 	public static final String SUCESS 		= "SUCCESS"     ;
+	public static final String FAIL 		= "FAIL"     ;
 	public static final String ADULT 		= "ADULT"     ;
 	public static final String CHILD 		= "CHILD"     ;
 }

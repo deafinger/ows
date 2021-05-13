@@ -125,8 +125,8 @@ public class OWSXmlCommon {
 	* @return SOAPMessage
 	* @author 서민재
 	*/
-	public SOAPMessage getResponseSoap(Document doc,String actionTag) throws Exception{
-		String soapUrl = "http://ec2-52-78-184-230.ap-northeast-2.compute.amazonaws.com:8080/ows_ws_51/Reservation.asmx";
+	public SOAPMessage getResponseSoap(Document doc,String actionTag,String wsdlType) throws Exception{
+		String soapUrl = "http://ec2-52-78-184-230.ap-northeast-2.compute.amazonaws.com:8080/ows_ws_51/"+wsdlType;
 		String soapAction = "http://webservices.micros.com/ows/5.1" + actionTag;
 		TransformerFactory tf = TransformerFactory.newInstance();
 		Transformer transformer = tf.newTransformer();

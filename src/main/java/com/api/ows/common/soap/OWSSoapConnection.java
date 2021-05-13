@@ -41,7 +41,7 @@ public class OWSSoapConnection {
 	* @return Map<String,Object>
 	* @author 서민재
 	*/
-	public Map<String, Object> doSoapConnection(Map<String, Object> param, String soapAction) throws Exception {
+	public Map<String, Object> doSoapConnection(Map<String, Object> param, String soapAction,String wsdlType) throws Exception {
 		// Body Document
 		MapToBodyElement converter = new MapToBodyElement(new CreateDocument().createDoc(), null);
 		// Element
@@ -52,7 +52,7 @@ public class OWSSoapConnection {
 		OWSXmlCommon common = new OWSXmlCommon(doc, bodyElemet);
 		doc = common.getSoapXml();
 
-		SOAPMessage responseSoap = common.getResponseSoap(doc, soapAction);
+		SOAPMessage responseSoap = common.getResponseSoap(doc, soapAction,wsdlType);
 
 		SOAPBody resBody = responseSoap.getSOAPBody();
 

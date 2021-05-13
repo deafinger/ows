@@ -44,12 +44,7 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 	ComponetObjectMapper mapper;
 	
 	@Override
-	public Map<String,Object> doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception {
-		return null;
-	}
-	
-	@Override
-	public Map<String, Object> doFutureBookingSummaryRequestByDate(FutureBookingSummaryReqVO param) throws Exception {
+	public Map<String, Object> doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception {
 		//BodyModel 만들기
 		FutureBookingSummaryBody setting = new FutureBookingSummaryBody(param);
 		Map<String, Object> body = mapper.getMapper().convertValue(setting, Map.class);
@@ -59,26 +54,23 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 		
 		//SOAP 통신
 		OWSSoapConnection con = new OWSSoapConnection();
-		Map<String,Object> soapResultMap = con.doSoapConnection(bodyMap, "/Reservation.wsdl#FutureBookingSummary");
+		Map<String,Object> soapResultMap = con.doSoapConnection(bodyMap, "/Reservation.wsdl#FutureBookingSummary","Reservation.asmx");
 		Map<String,Object> status = U.get(soapResultMap, "FutureBookingSummaryResponse.Result");
 		
 		log.info("status : {}",status );
 		List<FutureBookingSummaryResVO> voList = new ArrayList<>();
 		//Vo 담기
-		if(status.get("-resultStatusFlag").equals(CommonString.SUCESS)) { // soap result 코드 확인
+		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
+		 // soap result 코드 확인
 			
-			Object reservations = U.get(soapResultMap, "FutureBookingSummaryResponse.HotelReservations.r:HotelReservation");
-			if(reservations instanceof List) {
-				List<Object> infos = (List)reservations;
-				for(Object info  : infos) {
-					voList.add(setVO(info));
-				}
-			}else {
-				voList.add(setVO(reservations));
+		Object reservations = U.get(soapResultMap, "FutureBookingSummaryResponse.HotelReservations.r:HotelReservation");
+		if(reservations instanceof List) {
+			List<Object> infos = (List)reservations;
+			for(Object info  : infos) {
+				voList.add(setVO(info));
 			}
-		}else {
-			throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
-		}
+		}else voList.add(setVO(reservations));
+		
 		Map<String, Object> result = new HashMap<String,Object>();
 		result.put("reservationList",voList );
 		result.put("reservationListSize", Integer.valueOf(voList.size()));

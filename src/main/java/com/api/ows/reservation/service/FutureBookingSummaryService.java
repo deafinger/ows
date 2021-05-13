@@ -28,13 +28,4 @@ public interface FutureBookingSummaryService {
 	*/
 	Map<String,Object>  doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception;
 	
-	
-	/**
-	* @Description : StartDate와 EndDate로 목록 조회
-	* @param  
-	* @return Map<String,Object>
-	* @author 서민재
-	*/
-	Map<String,Object>  doFutureBookingSummaryRequestByDate(FutureBookingSummaryReqVO param) throws Exception;
-	
 }

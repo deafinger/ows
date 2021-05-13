@@ -1,5 +1,7 @@
 package com.api.ows.reservation.controller;
 
+import java.util.HashMap;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RestController
-@RequestMapping(path = "/reservation")
+@RequestMapping(path = "/reservation/future")
 public class FutureBookingSummaryController {
 	
 	@Autowired
@@ -49,24 +51,14 @@ public class FutureBookingSummaryController {
 	* @return ResponseEntity<?>
 	* @author 서민재
 	*/
-	@PostMapping(path = "/future")
-	public ResponseEntity<?> futureBookingSummaryRequest(@RequestBody FutureBookingSummaryReqVO param) throws Exception{
-		log.info("PATH :/reservation/future ");
-		return ResponseEntity.ok().body(service.doFutureBookingSummaryRequest(param));
-	}
-	/**
-	* @Description : 
-	* @param  
-	* @return ResponseEntity<?>
-	* @author 서민재
-	*/
-	@PostMapping(path = "/futureByDate")
-	public ResponseEntity<?> futureBookingSummaryRequestByDate(@Valid @RequestBody FutureBookingSummaryReqVO param,Errors errors) throws Exception{
-		log.info("PATH :/reservation/futureByDate ");
-		if(errors.hasErrors()) {
-			return ResponseEntity.badRequest().body(mes.getMessage(errors));
+	@PostMapping(path = "/booking")
+	public ResponseEntity<?> futureBookingSummaryRequest(@Valid @RequestBody FutureBookingSummaryReqVO param,Errors errors) throws Exception{
+		log.info("PATH :/reservation/future/booking");
+		if(errors.hasErrors())return ResponseEntity.badRequest().body(mes.getMessage(errors)); 
+		else if(param.isNull()) {
+			return ResponseEntity.badRequest().body("Empty Parameter");
 		}
-		return ResponseEntity.ok().body(service.doFutureBookingSummaryRequestByDate(param));
+		return ResponseEntity.ok().body(service.doFutureBookingSummaryRequest(param));
 	}
 	
 }
