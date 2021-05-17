@@ -37,6 +37,7 @@ public class CommonString {
 	/* ################################ XMLNS START #################################### */
 	public static final String RESVWSDL		= "http://webservices.micros.com/ows/5.1/Reservation.wsdl" ;
 	public static final String HOTELLCOMMON = "http://webservices.micros.com/og/4.3/HotelCommon/"      ;
+	public static final String RESVADVANCED = "http://webservices.micros.com/og/4.3/ResvAdvanced/"     ;
 	public static final String COMMON 		= "http://webservices.micros.com/og/4.3/Common/"           ;
 	public static final String RESERVATION 	= "http://webservices.micros.com/og/4.3/Reservation/"      ;
 	public static final String NAME 		= "http://webservices.micros.com/og/4.3/Name/"             ;
