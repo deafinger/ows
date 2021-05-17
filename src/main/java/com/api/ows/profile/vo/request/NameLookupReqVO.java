@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NameLookupReqVO {
-	@NotNull(message = "EmailAddress는 필수 입력 사항입니다.")
 	private String emailAddress;
+	private String lastName;
+	private String firstName;
 }

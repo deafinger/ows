@@ -11,8 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EmailAddress {
+public class FirstName {
 	private String xmlns;
-	private EmailAddress EmailAddress;
 	private String nodeValue;
 }

@@ -41,9 +41,6 @@ public class FutureBookingSummaryBody {
 	private AdditionalFilters AdditionalFilters;
 	private QueryDateRange QueryDateRange;
 	
-	
-	
-	
 	@Builder
 	public FutureBookingSummaryBody(FutureBookingSummaryReqVO param) {
 		// xmlns
@@ -79,9 +76,5 @@ public class FutureBookingSummaryBody {
 		}
 		
 	}
-	
-	
-	
-	
 	
 }
