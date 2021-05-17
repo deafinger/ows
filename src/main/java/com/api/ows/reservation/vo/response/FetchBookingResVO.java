@@ -28,7 +28,7 @@ public class FetchBookingResVO {
 	private	String	roomTypeCode						;	//	# roomTypeCode : 객실 타입 코드
 	private	String	roomTypeName						;	//	# roomTypeName : 객실 타입 이름
 	private	String	roomTypeDescription					;	//	# roomTypeDescription : 객실 타입 설명
-	private	String	roomTypeShortDescription					;	//	# roomTypeDescription : 객실 타입 설명
+	private	String	roomTypeShortDescription			;	//	# roomTypeShortDescription : 객실 타입 짧은 설명
 	private	String	roomNumber							;	//	# roomNumber : 예약에 할당된 방 번호
 	private	String	adult								;	//	# adult : 어른 수
 	private	String	child								;	//	# child : 아이 수
@@ -57,6 +57,4 @@ public class FetchBookingResVO {
 	private	String	stateProv							;	//	# stateProv : 시 이름
 	private	String	countryCode							;	//	# countryCode : 국가 코드
 	private	String	postalCode							;	//	# postalCode : 우편 번호
-	 
-
 }
