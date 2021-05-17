@@ -48,8 +48,8 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 		//BodyModel 만들기
 		FutureBookingSummaryBody setting = new FutureBookingSummaryBody(param);
 		Map<String, Object> body = mapper.getMapper().convertValue(setting, Map.class);
-	
-		Map<String,Object> bodyMap = new HashMap<String,Object>();
+
+		Map<String, Object> bodyMap = new HashMap<String, Object>();
 		bodyMap.put("FutureBookingSummaryRequest", body);
 		
 		//SOAP 통신
