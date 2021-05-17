@@ -1,6 +1,8 @@
 package com.api.ows.profile.model.nameLookup;
 
 
+import com.api.ows.profile.model.nameLookup.FirstName.FirstNameBuilder;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class EmailAddress {
+public class NameLookup {
 	private String xmlns;
-	private EmailAddress EmailAddress;
-	private String nodeValue;
+	private LastName LastName;
+	private FirstName FirstName;
 }
