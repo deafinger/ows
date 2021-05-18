@@ -18,5 +18,6 @@ import lombok.Data;
  */
 @Data
 public class MakePaymentResVO {
-	private String result;
+	private String resvNameId;				// # resvNameId : 시스템예약ID
+	private String resultStatusFlag;		// # resultStatusFlag : 요청결과
 }

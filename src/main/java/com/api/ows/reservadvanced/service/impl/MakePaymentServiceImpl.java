@@ -47,24 +47,19 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 	public Map<String, Object> doMakePayment(MakePaymentReqVO param) throws Exception {
 		//BodyModel 만들기
 		final MakePaymentBody setting = new MakePaymentBody(param);
-//		final Map<String, Object> body = mapper.getMapper().convertValue(setting, Map.class);
-//		Map<String,Object> bodyMap = new HashMap<String,Object>();
-//		bodyMap.put("MakePaymentRequest", body);
-//		log.info("BodyMap : {}", bodyMap);
-//		//SOAP 통신
 		final Map<String,Object> soapResultMap = new OWSSoapConnection().doSoapConnection(setting.getBody(), "/ResvAdvanced.wsdl#MakePayment","ResvAdvanced.asmx");
-//		final Map<String,Object> status = U.get(soapResultMap, "InvoiceResponse.Result");
+		final Map<String,Object> status = U.get(soapResultMap, "MakePaymentResponse.Result");
 		
-//		log.info("status : {}",status );
+		log.info("status : {}",status );
 		//Vo 담기
-//		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
+		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
 		
-//		Map<String,Object> invoice = U.get(soapResultMap, "InvoiceResponse");
+		Map<String,Object> makePayment = U.get(soapResultMap, "MakePaymentResponse");
 		
-//		Map<String, Object> result = new HashMap<String,Object>();
-//		result.put("makePayment",setVO(invoice) );
-//		return soapResultMap;
-		return soapResultMap;
+		Map<String, Object> result = new HashMap<String,Object>();
+		result.put("makePayment",setVO(makePayment) );
+		
+		return result;
 	}
 	
 	private  MakePaymentResVO setVO(Object info) {
@@ -72,8 +67,9 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 		MakePaymentResVO vo  = new MakePaymentResVO();
 		Map<String,Object> infoMap = (Map<String,Object>)info;
 		
-		// # firstName : 이름 	
-//		vo.setFirstName(CommonUtill.pathMapGetString(infoMap, "Invoice.r:Name.c:firstName"));
+		// 결과
+		vo.setResultStatusFlag(CommonUtill.pathMapGetString(infoMap, "Result.-resultStatusFlag"));
+		vo.setResvNameId(CommonUtill.pathMapGetString(infoMap, "ReservationID.c:UniqueID.#text"));
 		return vo;
 	}
 }
