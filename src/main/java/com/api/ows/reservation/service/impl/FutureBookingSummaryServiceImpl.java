@@ -47,7 +47,7 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 	public Map<String, Object> doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception {
 		//BodyModel 만들기
 		final FutureBookingSummaryBody setting = new FutureBookingSummaryBody(param);
-	
+
 		//SOAP 통신
 		final Map<String,Object> soapResultMap = new OWSSoapConnection().doSoapConnection(setting.getBody(), "/Reservation.wsdl#FutureBookingSummary","Reservation.asmx");
 		final Map<String,Object> status = U.get(soapResultMap, "FutureBookingSummaryResponse.Result");
