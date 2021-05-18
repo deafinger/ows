@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
-import com.api.ows.common.utill.ComponetObjectMapper;
 import com.api.ows.reservation.model.futureBookingSummary.FutureBookingSummaryBody;
 import com.api.ows.reservation.service.FutureBookingSummaryService;
 import com.api.ows.reservation.vo.request.FutureBookingSummaryReqVO;
@@ -40,8 +39,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryService {
 	
-	@Autowired
-	ComponetObjectMapper mapper;
 	
 	@Override
 	public Map<String, Object> doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception {

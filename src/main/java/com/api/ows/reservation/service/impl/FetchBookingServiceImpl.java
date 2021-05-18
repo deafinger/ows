@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
-import com.api.ows.common.utill.ComponetObjectMapper;
 import com.api.ows.reservation.model.fetchBooking.FetchBookingBody;
 import com.api.ows.reservation.service.FetchBookingService;
 import com.api.ows.reservation.vo.request.FetchBookingReqVO;
@@ -40,8 +39,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class FetchBookingServiceImpl implements FetchBookingService{
-	@Autowired
-	ComponetObjectMapper mapper;
 	
 	@Override
 	public Map<String,Object> doFetchBookingRequest(FetchBookingReqVO param) throws Exception {

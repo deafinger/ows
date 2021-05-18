@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
-import com.api.ows.common.utill.ComponetObjectMapper;
 import com.api.ows.reservadvanced.model.invoice.InvoiceBody;
 import com.api.ows.reservadvanced.model.makepayment.MakePaymentBody;
 import com.api.ows.reservadvanced.service.MakePaymentService;
