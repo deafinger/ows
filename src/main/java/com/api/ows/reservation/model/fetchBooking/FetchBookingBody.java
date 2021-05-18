@@ -1,8 +1,12 @@
 package com.api.ows.reservation.model.fetchBooking;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.reservation.vo.request.FetchBookingReqVO;
+import com.github.underscore.lodash.U;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,18 +34,22 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 @Slf4j
 public class FetchBookingBody {
-	private String xmlns; // # xmlns : 고유 Attribute
-	private ConfirmationNumber ConfirmationNumber;
+	
+	private Map<String,Object> body;
 	
 	@Builder
+	
 	public FetchBookingBody(FetchBookingReqVO param) {
-		this.xmlns = CommonString.RESVWSDL;
 		
-		this.ConfirmationNumber = (param.getConfirmationId() == null)? null
-				:new ConfirmationNumber().builder()
-				.nodeValue(param.getConfirmationId())
-				.type(CommonString.TYPEIN)
-				.build();
+		Map<String,Object> map = new HashMap<String, Object>();
+		U.set(map, "FetchBookingRequest", new HashMap<String, Object>());
+		U.set(map, "FetchBookingRequest.xmlns", CommonString.RESVWSDL);
+		
+		U.set(map, "FetchBookingRequest.ConfirmationNumber", new HashMap<String, Object>());
+		U.set(map, "FetchBookingRequest.ConfirmationNumber.nodeValue", param.getConfirmationId());
+		U.set(map, "FetchBookingRequest.ConfirmationNumber.type", CommonString.TYPEIN);
+		
+		this.body = map;
 	}
 }
 

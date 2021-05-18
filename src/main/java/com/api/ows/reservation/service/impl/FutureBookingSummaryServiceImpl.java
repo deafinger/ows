@@ -46,16 +46,11 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 	@Override
 	public Map<String, Object> doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception {
 		//BodyModel 만들기
-		FutureBookingSummaryBody setting = new FutureBookingSummaryBody(param);
-		Map<String, Object> body = mapper.getMapper().convertValue(setting, Map.class);
+		final FutureBookingSummaryBody setting = new FutureBookingSummaryBody(param);
 	
-		Map<String,Object> bodyMap = new HashMap<String,Object>();
-		bodyMap.put("FutureBookingSummaryRequest", body);
-		
 		//SOAP 통신
-		OWSSoapConnection con = new OWSSoapConnection();
-		Map<String,Object> soapResultMap = con.doSoapConnection(bodyMap, "/Reservation.wsdl#FutureBookingSummary","Reservation.asmx");
-		Map<String,Object> status = U.get(soapResultMap, "FutureBookingSummaryResponse.Result");
+		final Map<String,Object> soapResultMap = new OWSSoapConnection().doSoapConnection(setting.getBody(), "/Reservation.wsdl#FutureBookingSummary","Reservation.asmx");
+		final Map<String,Object> status = U.get(soapResultMap, "FutureBookingSummaryResponse.Result");
 		
 		log.info("status : {}",status );
 		List<FutureBookingSummaryResVO> voList = new ArrayList<>();
