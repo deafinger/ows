@@ -46,20 +46,14 @@ public class FetchBookingServiceImpl implements FetchBookingService{
 	@Override
 	public Map<String,Object> doFetchBookingRequest(FetchBookingReqVO param) throws Exception {
 		//BodyModel 만들기
-		FetchBookingBody setting = new FetchBookingBody(param);
-		Map<String, Object> body = mapper.getMapper().convertValue(setting, Map.class);
-	
-		Map<String,Object> bodyMap = new HashMap<String,Object>();
-		bodyMap.put("FetchBookingRequest", body);
-		
+		final FetchBookingBody setting = new FetchBookingBody(param);
 		//SOAP 통신
-		OWSSoapConnection con = new OWSSoapConnection();
-		Map<String,Object> soapResultMap = con.doSoapConnection(bodyMap, "/Reservation.wsdl#FetchBooking","Reservation.asmx");
+		
+		Map<String,Object> soapResultMap =  new OWSSoapConnection().doSoapConnection(setting.getBody(), "/Reservation.wsdl#FetchBooking","Reservation.asmx");
 		Map<String,Object> status = U.get(soapResultMap, "FetchBookingResponse.Result");
 		
 		log.info("status : {}",status );
-		List<FetchBookingResVO> voList = new ArrayList<>();
-		
+
 		// soap result 코드 확인
 		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
 		

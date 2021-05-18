@@ -1,13 +1,10 @@
-package com.api.ows.reservadvanced.model.invoice;
+package com.api.ows.reservadvanced.vo.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
- * @Class ReservationID
- * @Description : Soap Request Body Node Class 
+ * @Class MakePaymentResVO
+ * @Description : 결제내역 추가 Response VO 
  * @
  * @ 수정일      	     수정자           수정내용
  * @ ---------  	 ---------   	-------------------------------
@@ -20,9 +17,7 @@ import lombok.NoArgsConstructor;
  *  Copyright (주)아임게이트
  */
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class ReservationID {
-	private UniqueID UniqueID;
+public class MakePaymentResVO {
+	private String resvNameId;				// # resvNameId : 시스템예약ID
+	private String resultStatusFlag;		// # resultStatusFlag : 요청결과
 }

@@ -1,15 +1,13 @@
 package com.api.ows.reservation.model.futureBookingSummary;
 
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.utill.CommonUtill;
 import com.api.ows.reservation.vo.request.FutureBookingSummaryReqVO;
+import com.github.underscore.lodash.U;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,45 +34,52 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FutureBookingSummaryBody {
 	
-	private String xmlns; // # xmlns : 고유 Attribute
-	private NameID NameID;
-	private AdditionalFilters AdditionalFilters;
-	private QueryDateRange QueryDateRange;
+
+	private Map<String,Object> body;
+
 	
 	@Builder
 	public FutureBookingSummaryBody(FutureBookingSummaryReqVO param) {
-		// xmlns
-		this.xmlns = CommonString.RESVWSDL;
-		// NameID
-		this.NameID = (param.getNameId()==null)?null:new NameID().builder().type(CommonString.TYPEIN).nodeValue(param.getNameId()).build();
+		Map<String,Object> map = new HashMap<String, Object>();
 		
-		EndDate ed = (param.getEndDate()==null)?null:new EndDate(CommonUtill.jodaDateFormat(param.getEndDate(), CommonString.TBetween),CommonString.HOTELLCOMMON);
-		StartDate sd = (param.getStartDate()==null)?null:new StartDate(CommonUtill.jodaDateFormat(param.getStartDate(), CommonString.TBetween),CommonString.HOTELLCOMMON);
+		U.set(map, "FutureBookingSummaryRequest", new HashMap<String, Object>());
+		U.set(map, "FutureBookingSummaryRequest.xmlns", CommonString.RESVWSDL);
+		if(param.getNameId()!=null) {
+			U.set(map, "FutureBookingSummaryRequest.NameID", new HashMap<String, Object>());
+			U.set(map, "FutureBookingSummaryRequest.NameID.type", CommonString.TYPEIN);
+			U.set(map, "FutureBookingSummaryRequest.NameID.nodeValue", param.getNameId());
+		}
 		// QueryDateRange
-		if(ed != null || sd !=null) {
-			this.QueryDateRange = new QueryDateRange().builder()
-					.dataType(CommonString.ARRIVALDATE)
-					.EndDate(ed)
-					.StartDate(sd)
-					.build()
-					;
+		if(param.getEndDate()!=null && param.getStartDate()!=null) {
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange", new HashMap<String, Object>());
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.dataType", CommonString.ARRIVALDATE);
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate", new HashMap<String, Object>());
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate.xmlns", CommonString.HOTELLCOMMON);
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate.nodeValue", CommonUtill.jodaDateFormat(param.getEndDate(), CommonString.TBetween));
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate", new HashMap<String, Object>());
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate.xmlns", CommonString.HOTELLCOMMON);
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate.nodeValue", CommonUtill.jodaDateFormat(param.getStartDate(), CommonString.TBetween));
 		}
 		
-		//AdditionalFilters 
-		ConfirmationNumber cfn = (param.getConfirmationId()==null)?null
-									:new ConfirmationNumber(CommonString.RESERVATION,CommonString.TYPEIN ,param.getConfirmationId());
-		HotelReference hrf = (param.getChainCode()==null ||param.getHotelCode()==null) ? null
-									:new HotelReference(CommonString.RESERVATION,  param.getHotelCode(),param.getChainCode());
-		boolean nothing = (cfn != null || hrf!=null);
-		if(nothing) {
-			this.AdditionalFilters = new AdditionalFilters().builder()
-					.GetList("true")
-					.ReservationDisposition("NONE")
-					.ConfirmationNumber(cfn)
-					.HotelReference(hrf)
-					.build();
+		//AdditionalFilters
+		if((param.getConfirmationId()!=null) || (param.getChainCode()!=null && param.getHotelCode()!=null)) {
+			U.set(map, "FutureBookingSummaryRequest.AdditionalFilters", new HashMap<String, Object>());
+			U.set(map, "FutureBookingSummaryRequest.AdditionalFilters.GetList", "true");
+			U.set(map, "FutureBookingSummaryRequest.AdditionalFilters.ReservationDisposition", "NONE");
+			if(param.getConfirmationId()!=null) {
+				U.set(map, "FutureBookingSummaryRequest.ConfirmationNumber", new HashMap<String, Object>());
+				U.set(map, "FutureBookingSummaryRequest.ConfirmationNumber.xml", CommonString.RESERVATION);
+				U.set(map, "FutureBookingSummaryRequest.ConfirmationNumber.type", CommonString.TYPEIN);
+				U.set(map, "FutureBookingSummaryRequest.ConfirmationNumber.nodeValue", param.getConfirmationId());
+			}
+			if(param.getChainCode()!=null && param.getHotelCode()!=null) {
+				U.set(map, "FutureBookingSummaryRequest.HotelReference", new HashMap<String, Object>());
+				U.set(map, "FutureBookingSummaryRequest.HotelReference.xmlns", CommonString.RESERVATION);
+				U.set(map, "FutureBookingSummaryRequest.HotelReference.chainCode", param.getChainCode());
+				U.set(map, "FutureBookingSummaryRequest.HotelReference.hoteCode", param.getHotelCode());
+			}
 		}
-		
+		this.body=map;
 	}
 	
 }

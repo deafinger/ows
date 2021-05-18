@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Map;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,7 @@ public class CommonUtill {
 	*/
 	public static String jodaDateFormat(Date date,String format) {
 		DateTime to = new DateTime(date);
+		DateTime timzoneDt = to.withZone(DateTimeZone.forID("UTC"));
 		DateTimeFormatter formatter = DateTimeFormat.forPattern(format);
 		return formatter.print(to);
 	}
