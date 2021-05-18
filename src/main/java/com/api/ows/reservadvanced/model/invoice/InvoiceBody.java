@@ -1,7 +1,11 @@
 package com.api.ows.reservadvanced.model.invoice;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.reservadvanced.vo.request.InvoiceReqVO;
+import com.github.underscore.lodash.U;
 
 import lombok.Builder;
 import lombok.Data;
@@ -23,34 +27,30 @@ import lombok.Data;
 @Data
 @Builder
 public class InvoiceBody {
-	private String xmlns;
-	private ReservationRequest ReservationRequest; 
-	private ReturnFixedCharges ReturnFixedCharges;
+	
+	private Map<String,Object> body;
+	
 	@Builder
 	public InvoiceBody(InvoiceReqVO param) {
-		this.xmlns = CommonString.RESVADVANCED;
-		//hotelCode
-		this.ReservationRequest = new ReservationRequest().builder()
-				.HotelReference(
-						new HotelReference().builder()
-						.hotelCode(param.getHotelCode())
-						.build()
-						)
-				.ReservationID(
-						new ReservationID().builder()
-						.UniqueID(
-								new UniqueID().builder()
-								.type(CommonString.TYPEEX)
-								.source("RESV_NAME_ID")
-								.xmlns(CommonString.COMMON)
-								.nodeValue(param.getResvNameId())
-								.build()
-								)
-						.build()
-						)
-				.build(); 
+		Map<String,Object> map = new HashMap<String,Object>();
 		
-		;
-		this.ReturnFixedCharges = new ReturnFixedCharges().builder().nodeValue("Y").build(); 
+		U.set(map, "InvoiceRequest", new HashMap<String,Object>());
+		U.set(map, "InvoiceRequest.xmlns", CommonString.RESVADVANCED);
+		
+		U.set(map, "InvoiceRequest.ReservationRequest", new HashMap<String,Object>());
+		
+		U.set(map, "InvoiceRequest.ReservationRequest.HotelReference", new HashMap<String,Object>());
+		U.set(map, "InvoiceRequest.ReservationRequest.HotelReference.hotelCode", param.getHotelCode());
+		
+		U.set(map, "InvoiceRequest.ReservationRequest.ReservationID", new HashMap<String,Object>());
+		U.set(map, "InvoiceRequest.ReservationRequest.ReservationID.UniqueID", new HashMap<String,Object>());
+		U.set(map, "InvoiceRequest.ReservationRequest.ReservationID.UniqueID.type", CommonString.TYPEEX);
+		U.set(map, "InvoiceRequest.ReservationRequest.ReservationID.UniqueID.source", "RESV_NAME_ID");
+		U.set(map, "InvoiceRequest.ReservationRequest.ReservationID.UniqueID.xmlns", CommonString.COMMON);
+		U.set(map, "InvoiceRequest.ReservationRequest.ReservationID.UniqueID.nodeValue", param.getResvNameId());
+		
+		U.set(map, "InvoiceRequest.ReturnFixedCharges", new HashMap<String,Object>());
+		U.set(map, "InvoiceRequest.ReturnFixedCharges.nodeValue", "Y");
+		this.body=map;
 	}
 }

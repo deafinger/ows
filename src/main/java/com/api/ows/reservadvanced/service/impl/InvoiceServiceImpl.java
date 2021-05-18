@@ -40,21 +40,14 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class InvoiceServiceImpl implements InvoiceService{
-	@Autowired
-	private ComponetObjectMapper mapper;
 	
 	@Override
 	public Map<String, Object> doInvoice(InvoiceReqVO param) throws Exception {
 		//BodyModel 만들기
-		InvoiceBody setting = new InvoiceBody(param);
-		Map<String, Object> body = mapper.getMapper().convertValue(setting, Map.class);
-	
-		Map<String,Object> bodyMap = new HashMap<String,Object>();
-		bodyMap.put("InvoiceRequest", body);
-		
+		final InvoiceBody setting = new InvoiceBody(param);
+		log.info("Body Map : {}",setting.getBody());
 		//SOAP 통신
-		OWSSoapConnection con = new OWSSoapConnection();
-		Map<String,Object> soapResultMap = con.doSoapConnection(bodyMap, "/ResvAdvanced.wsdl#Invoice","ResvAdvanced.asmx");
+		Map<String,Object> soapResultMap = new OWSSoapConnection().doSoapConnection(setting.getBody(), "/ResvAdvanced.wsdl#Invoice","ResvAdvanced.asmx");
 		Map<String,Object> status = U.get(soapResultMap, "InvoiceResponse.Result");
 		
 		log.info("status : {}",status );

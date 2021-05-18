@@ -24,6 +24,7 @@ public class CommonString {
 	/* ################################ DATEFORMAT START #################################### */
 	public static final String TZBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	public static final String TBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'00'ZZ";
+	public static final String BASICDATEFORM = "yyyy-MM-dd-HH:mm";
 	/* ################################ DATEFORMAT END #################################### */
 	
 	
