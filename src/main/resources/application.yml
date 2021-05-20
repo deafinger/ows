@@ -11,4 +11,10 @@ spring:
                 org.hibernate.SQL: INFO
                 org.quartz.core: INFO
                 org.h2.server.web: INFO
-            config: classpath:logback-spring.xml          
+            config: classpath:logback-spring.xml
+            
+# Swagger로 생성할 Document 경로 설정
+swagger:
+  name: "OWS Reservation APIs"
+  path: "com.api.ows.reservation.controller"
+            

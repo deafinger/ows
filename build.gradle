@@ -27,8 +27,14 @@ repositories {
 
 
 dependencies {
+  // Swagger for API Documentation
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.projectlombok:lombok:1.18.18'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	// Tymeleaf
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.4.5'
