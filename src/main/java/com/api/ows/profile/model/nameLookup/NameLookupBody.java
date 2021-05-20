@@ -1,17 +1,13 @@
 package com.api.ows.profile.model.nameLookup;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.utill.CommonUtill;
 import com.api.ows.profile.vo.request.NameLookupReqVO;
-import com.api.ows.reservation.model.futureBookingSummary.AdditionalFilters;
-import com.api.ows.reservation.model.futureBookingSummary.ConfirmationNumber;
-import com.api.ows.reservation.model.futureBookingSummary.EndDate;
-import com.api.ows.reservation.model.futureBookingSummary.FutureBookingSummaryBody;
-import com.api.ows.reservation.model.futureBookingSummary.HotelReference;
-import com.api.ows.reservation.model.futureBookingSummary.NameID;
-import com.api.ows.reservation.model.futureBookingSummary.QueryDateRange;
-import com.api.ows.reservation.model.futureBookingSummary.StartDate;
 import com.api.ows.reservation.vo.request.FutureBookingSummaryReqVO;
+import com.github.underscore.lodash.U;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,30 +22,43 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Builder
 public class NameLookupBody {
-	private String xmlns;
-	private NameLookupCriteria NameLookupCriteria;
+	private Map<String, Object> body;
 	
 	@Builder
 	public NameLookupBody(NameLookupReqVO param) {
-		this.xmlns = CommonString.NAMEWSDL;
+
+		Map<String,Object> map = new HashMap<String,Object>();
 		
-		final EmailAddress emailAddress = (param.getEmailAddress() == null) ? null : 
-				new EmailAddress().builder()
-					.xmlns(CommonString.NAME)
-					.EmailAddress(new EmailAddress().builder().nodeValue(param.getEmailAddress()).build())
-					.build();
+		U.set(map, "NameLookupRequest", new HashMap<String,Object>());
+		U.set(map, "NameLookupRequest.xmlns", CommonString.NAMEWSDL);
+		U.set(map, "NameLookupRequest.xmlns:c", CommonString.COMMON);
 		
-		final NameLookup nameLookup = ((param.getFirstName() == null) && (param.getLastName() == null)) ? null : 
-				new NameLookup().builder()
-					.xmlns(CommonString.NAME)
-					.FirstName(new FirstName().builder().nodeValue(param.getFirstName()).build())
-					.LastName(new LastName().builder().nodeValue(param.getLastName()).build())
-					.build();
+		U.set(map, "NameLookupRequest.NameLookupCriteria", new HashMap<String,Object>());
 		
-		this.NameLookupCriteria = new NameLookupCriteria().builder()
-			.EmailAddress(emailAddress)
-			.NameLookup(nameLookup)
-			.build();
+		if (param.getEmailAddress() != null) {
+			U.set(map, "NameLookupRequest.NameLookupCriteria.EmailAddress", new HashMap<String,Object>());
+			U.set(map, "NameLookupRequest.NameLookupCriteria.EmailAddress.xmlns", CommonString.NAME );
+			
+			U.set(map, "NameLookupRequest.NameLookupCriteria.EmailAddress.EmailAddress", new HashMap<String,Object>());
+			U.set(map, "NameLookupRequest.NameLookupCriteria.EmailAddress.EmailAddress.nodeValue", param.getEmailAddress());
+		}
+		if (param.getLastName() != null) {
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup", new HashMap<String,Object>());
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup.xmlns", CommonString.NAME );
+
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup.LastName", new HashMap<String, Object>());
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup.LastName.nodeValue", param.getLastName());
+		}
+		if (param.getFirstName() != null) {
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup", new HashMap<String,Object>());
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup.xmlns", CommonString.NAME );
+
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup.FirstName", new HashMap<String, Object>());
+			U.set(map, "NameLookupRequest.NameLookupCriteria.NameLookup.FirstName.nodeValue", param.getFirstName());
+		}
+		
+		this.body = map;
+		
 	}
-	
+
 }

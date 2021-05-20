@@ -14,11 +14,12 @@ import org.springframework.validation.annotation.Validated;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
-import com.api.ows.common.utill.ComponetObjectMapper;
 import com.api.ows.profile.model.nameLookup.*;
 import com.api.ows.profile.service.NameLookupService;
 import com.api.ows.profile.vo.request.NameLookupReqVO;
 import com.api.ows.profile.vo.response.NameLookupResVO;
+import com.api.ows.reservadvanced.model.invoice.InvoiceBody;
+import com.api.ows.reservadvanced.vo.response.InvoiceResVO;
 import com.api.ows.reservation.vo.response.FutureBookingSummaryResVO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -30,28 +31,21 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class NameLookupServiceImpl implements NameLookupService {
 
-	@Autowired
-	ComponetObjectMapper mapper;
-
 	@Override
 	public Map<String, Object> doNameLookupRequest(NameLookupReqVO param) throws Exception {
-		NameLookupBody buildedNameLookup = new NameLookupBody(param);
+		final NameLookupBody buildedFetchProfileBody = new NameLookupBody(param);
 
-		Map<String, Object> nameLookUpMap = new HashMap<String, Object>();
-		nameLookUpMap.put("NameLookupRequest", mapper.getMapper().convertValue(buildedNameLookup, Map.class));
-
-		log.info("bodyMap : {}", nameLookUpMap);
+		log.info("bodyMap : {}", buildedFetchProfileBody);
 
 		OWSSoapConnection con = new OWSSoapConnection();
-		Map<String, Object> soapResultMap = con.doSoapConnection(nameLookUpMap, CommonString.NAMELOOKUP_ACTION, CommonString.NAME_WSDL);
+		Map<String, Object> soapResultMap = con.doSoapConnection(buildedFetchProfileBody.getBody(), CommonString.NAME_LOOKUP_ACTION, CommonString.NAME_ASMX);
+		log.info("soapResultMap : {}", soapResultMap);
+
 		Map<String, Object> status = U.get(soapResultMap, "NameLookupResponse.Result");
-		
-		// service 
-		log.info("status : {}",status );
+		log.info("status : {}", status);
+
 		List<NameLookupResVO> voList = new ArrayList<>();
-//		//Vo 담기
 		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
-		// soap result 코드 확인
 
 		Object profiles = U.get(soapResultMap, "NameLookupResponse.Profiles.Profile");
 		if (profiles instanceof List) {
