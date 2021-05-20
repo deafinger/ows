@@ -37,6 +37,7 @@ public class CommonString {
 	
 	/* ################################ XMLNS START #################################### */
 	public static final String RESVWSDL		= "http://webservices.micros.com/ows/5.1/Reservation.wsdl" ;
+	public static final String NAMEWSDL		= "http://webservices.micros.com/ows/5.1/Name.wsdl"        ;
 	public static final String HOTELLCOMMON = "http://webservices.micros.com/og/4.3/HotelCommon/"      ;
 	public static final String RESVADVANCED = "http://webservices.micros.com/og/4.3/ResvAdvanced/"     ;
 	public static final String COMMON 		= "http://webservices.micros.com/og/4.3/Common/"           ;
@@ -53,4 +54,11 @@ public class CommonString {
 	public static final String FAIL 		= "FAIL"     ;
 	public static final String ADULT 		= "ADULT"     ;
 	public static final String CHILD 		= "CHILD"     ;
+
+	// WSDL type
+	public static final String RESERVATION_WSDL  = "Reservation.asmx" ;
+	public static final String RESVADVANCED_WSDL = "ResvAdvanced.asmx" ;
+	public static final String NAME_WSDL         = "Name.asmx" ;
+	// action
+	public static final String NAMELOOKUP_ACTION 	= "/Name.wsdl#NameLookup"                                  ;
 }
