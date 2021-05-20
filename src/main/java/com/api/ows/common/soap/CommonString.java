@@ -27,13 +27,11 @@ public class CommonString {
 	public static final String BASICDATEFORM = "yyyy-MM-dd-HH:mm";
 	/* ################################ DATEFORMAT END #################################### */
 	
-	
 	/* ################################ TYPE START #################################### */
 	public static final String ARRIVALDATE = "ARRIVAL_DATE";
 	public static final String TYPEIN = "INTERNAL";
 	public static final String TYPEEX = "EXTERNAL";
 	/* ################################ TYPE END #################################### */
-	
 	
 	/* ################################ XMLNS START #################################### */
 	public static final String RESVWSDL		= "http://webservices.micros.com/ows/5.1/Reservation.wsdl" ;
@@ -48,17 +46,18 @@ public class CommonString {
 	public static final String HOUSE 		= "http://webservices.micros.com/og/4.3/HouseKeeping/"     ;
 	/* ################################ XMLNS END #################################### */
 	
-	
 	//Result status 
-	public static final String SUCESS 		= "SUCCESS"     ;
-	public static final String FAIL 		= "FAIL"     ;
-	public static final String ADULT 		= "ADULT"     ;
-	public static final String CHILD 		= "CHILD"     ;
+	public static final String SUCESS 		= "SUCCESS";
+	public static final String FAIL 		= "FAIL";
+	public static final String ADULT 		= "ADULT";
+	public static final String CHILD 		= "CHILD";
 
 	// WSDL type
-	public static final String RESERVATION_WSDL  = "Reservation.asmx" ;
-	public static final String RESVADVANCED_WSDL = "ResvAdvanced.asmx" ;
-	public static final String NAME_WSDL         = "Name.asmx" ;
+	public static final String RESERVATION_WSDL  = "Reservation.asmx";
+	public static final String RESVADVANCED_WSDL = "ResvAdvanced.asmx";
+	public static final String NAME_ASMX         = "Name.asmx";
+
 	// action
-	public static final String NAMELOOKUP_ACTION 	= "/Name.wsdl#NameLookup"                                  ;
+	public static final String NAME_LOOKUP_ACTION   = "/Name.wsdl#NameLookup";
+	public static final String FETCH_PROFILE_ACTION = "/Name.wsdl#FetchProfile";
 }
