@@ -10,6 +10,8 @@ import javax.management.AttributeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.ows.common.exception.DataNotFoundException;
+import com.api.ows.common.exception.ErrorCodes;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
@@ -22,6 +24,7 @@ import com.api.ows.reservadvanced.vo.response.InvoiceResVO;
 import com.api.ows.reservadvanced.vo.response.MakePaymentResVO;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.github.underscore.lodash.U;
+import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -52,7 +55,8 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 		
 		log.info("status : {}",status );
 		//Vo 담기
-		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
+		
+		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new DataNotFoundException(status.get("c:OperaErrorCode").toString());
 		
 		Map<String,Object> makePayment = U.get(soapResultMap, "MakePaymentResponse");
 		

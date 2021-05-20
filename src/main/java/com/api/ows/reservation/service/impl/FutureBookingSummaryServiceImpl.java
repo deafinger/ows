@@ -10,6 +10,7 @@ import javax.management.AttributeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.ows.common.exception.DataNotFoundException;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
@@ -55,7 +56,7 @@ public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryServ
 		log.info("status : {}",status );
 		List<FutureBookingSummaryResVO> voList = new ArrayList<>();
 		//Vo 담기
-		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
+		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new DataNotFoundException(status.get("c:OperaErrorCode").toString());
 		 // soap result 코드 확인
 			
 		Object reservations = U.get(soapResultMap, "FutureBookingSummaryResponse.HotelReservations.r:HotelReservation");
