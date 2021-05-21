@@ -54,11 +54,15 @@ public class CommonUtill {
 		} 
 	}
 	public static String pathMapGetString(Map map, String path) {
+		Object result = null;
 		try {
-			Object result = U.get(map, path);
-			return result.toString();
+			result = U.get(map, path);
+			String re = result.toString(); 
+			return re;
 		} catch (NullPointerException e) {
 			return null;
+		}catch (NumberFormatException e) {
+			return (String) result;
 		} 
 	}
 	
