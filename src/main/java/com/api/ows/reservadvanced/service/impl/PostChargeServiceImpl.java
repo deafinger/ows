@@ -50,7 +50,7 @@ public class PostChargeServiceImpl implements PostChargeService{
 		Map<String,Object> postCharge = U.get(soapResultMap, "PostChargeResponse");
 		
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("postCharge",setVO(postCharge) );
+		result.put("Result",setVO(postCharge) );
 		
 		return result;
 	}

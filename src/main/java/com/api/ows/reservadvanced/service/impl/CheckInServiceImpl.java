@@ -36,7 +36,7 @@ public class CheckInServiceImpl implements CheckInService{
 //		Map<String,Object> checkIn = U.get(soapResultMap, "CheckInResponse");
 		
 //		Map<String, Object> result = new HashMap<String,Object>();
-//		result.put("checkIn",setVO(checkIn) );
+//		result.put("Result",setVO(checkIn) );
 		
 		return soapResultMap;
 	}

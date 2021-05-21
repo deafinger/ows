@@ -38,7 +38,6 @@ public class FetchBookingBody {
 	private Map<String,Object> body;
 	
 	@Builder
-	
 	public FetchBookingBody(FetchBookingReqVO param) {
 		
 		Map<String,Object> map = new HashMap<String, Object>();

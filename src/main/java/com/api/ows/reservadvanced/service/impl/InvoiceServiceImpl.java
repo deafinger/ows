@@ -56,10 +56,9 @@ public class InvoiceServiceImpl implements InvoiceService{
 		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
 		
 		Map<String,Object> invoice = U.get(soapResultMap, "InvoiceResponse");
-		voList.add(setVO(invoice));
 		
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("invoice",voList );
+		result.put("Result",setVO(invoice));
 		return result;
 	}
 	
