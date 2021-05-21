@@ -17,10 +17,9 @@ public class LogAspect {
 	@Around("execution(* *com.api.ows.*.service.*.*(..))")
 	public Object authCheck(ProceedingJoinPoint pjp) throws Throwable {
 		String methodName = pjp.getSignature().toShortString();
-		log.info(methodName+" Param : {}",pjp.getArgs());
+		log.info(methodName+" Param : {}", pjp.getArgs());
 		Object result = pjp.proceed();
-		log.info(methodName+" return : {}",result);
+		log.info(methodName+" return : {}", result);
 		return result;
 	}
-
 }
