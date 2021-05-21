@@ -58,8 +58,8 @@ public class NameLookupServiceImpl implements NameLookupService {
 		}
 
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("profileList", voList );
-		result.put("profileListSize", Integer.valueOf(voList.size()));
+		result.put("ResultList", voList );
+		result.put("TotalCount", Integer.valueOf(voList.size()));
 		return result;
 	}
 	
