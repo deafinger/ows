@@ -41,8 +41,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class FetchBookingServiceImpl implements FetchBookingService{
-	@Autowired
-	ComponetObjectMapper mapper;
 	
 	@Override
 	public Map<String,Object> doFetchBookingRequest(FetchBookingReqVO param) throws Exception {

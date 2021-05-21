@@ -23,6 +23,8 @@ public final class CommonString {
 	public static final String TZBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	public static final String TBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'00'ZZ";
 	public static final String BASICDATEFORM = "yyyy-MM-dd-HH:mm";
+	public static final String POSTING_DATE = "yyyy-MM-dd";
+	public static final String POSTING_TIME= "HH:mm:ssZZ";
 	/* ################################ DATEFORMAT END #################################### */
 	
 	
@@ -49,6 +51,9 @@ public final class CommonString {
 	//Result status 
 	public static final String SUCESS 		= "SUCCESS"     ;
 	public static final String FAIL 		= "FAIL"     ;
+	
+	// 공통 Value
 	public static final String ADULT 		= "ADULT"     ;
 	public static final String CHILD 		= "CHILD"     ;
+	public static final String RESV_NAME_ID 		= "RESV_NAME_ID"     ;
 }

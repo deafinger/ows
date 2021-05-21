@@ -13,4 +13,7 @@ public final class ErrorCodes {
     public static final String ERR_DATA_NOT_FOUND_CD    = "error-0002";
     public static final String ERR_DATA_NOT_FOUND_MSG   = "데이터가 존재하지 않거나, 받아올 수 없는 상태입니다.";
 
+ // TODO : 에러코드와 메시지를 작성하세요.
+    public static final String ERR_BAD_PARAMETER_CD    = "error-0003";
+    public static final String ERR_BAD_PARAMETER_MSG   = "요청하신 Parameter가 형식에 맞지 않습니다.";
 }

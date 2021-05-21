@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.ows.common.exception.BadParameterException;
 import com.api.ows.common.utill.ValidationErrorsMessage;
 import com.api.ows.reservadvanced.service.AssignRoomAdvService;
 import com.api.ows.reservadvanced.service.CheckInService;
@@ -45,7 +46,7 @@ public class AssignRoomAdvController {
 	@PostMapping(path = "/request")
 	public ResponseEntity<?> assignRoomAdvRequest(@Valid @RequestBody AssignRoomAdvReqVO param,Errors errors) throws Exception{
 		log.info("PATH :/reserAdvanced/assingnRoom/request");
-		if(errors.hasErrors())return ResponseEntity.badRequest().body(mes.getMessage(errors)); 
+		if(errors.hasErrors()) throw new BadParameterException(mes.getExceptionMessage(errors));  
 		return ResponseEntity.ok().body(service.doAssignRoom(param));
 	}
 
