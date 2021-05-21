@@ -18,9 +18,7 @@ import lombok.Data;
  *
  *  Copyright (주)아임게이트
  */
-@Component
-@Data
-public class CommonString {
+public final class CommonString {
 	/* ################################ DATEFORMAT START #################################### */
 	public static final String TZBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 	public static final String TBetween = "yyyy-MM-dd'T'HH:mm:ss.SSS'00'ZZ";
