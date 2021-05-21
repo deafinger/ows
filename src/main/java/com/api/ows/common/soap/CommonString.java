@@ -27,16 +27,15 @@ public final class CommonString {
 	public static final String POSTING_TIME= "HH:mm:ssZZ";
 	/* ################################ DATEFORMAT END #################################### */
 	
-	
 	/* ################################ TYPE START #################################### */
 	public static final String ARRIVALDATE = "ARRIVAL_DATE";
 	public static final String TYPEIN = "INTERNAL";
 	public static final String TYPEEX = "EXTERNAL";
 	/* ################################ TYPE END #################################### */
 	
-	
 	/* ################################ XMLNS START #################################### */
 	public static final String RESVWSDL		= "http://webservices.micros.com/ows/5.1/Reservation.wsdl" ;
+	public static final String NAMEWSDL		= "http://webservices.micros.com/ows/5.1/Name.wsdl"        ;
 	public static final String HOTELLCOMMON = "http://webservices.micros.com/og/4.3/HotelCommon/"      ;
 	public static final String RESVADVANCED = "http://webservices.micros.com/og/4.3/ResvAdvanced/"     ;
 	public static final String COMMON 		= "http://webservices.micros.com/og/4.3/Common/"           ;
@@ -47,13 +46,22 @@ public final class CommonString {
 	public static final String HOUSE 		= "http://webservices.micros.com/og/4.3/HouseKeeping/"     ;
 	/* ################################ XMLNS END #################################### */
 	
-	
 	//Result status 
-	public static final String SUCESS 		= "SUCCESS"     ;
-	public static final String FAIL 		= "FAIL"     ;
-	
-	// 공통 Value
-	public static final String ADULT 		= "ADULT"     ;
-	public static final String CHILD 		= "CHILD"     ;
-	public static final String RESV_NAME_ID 		= "RESV_NAME_ID"     ;
+
+	public static final String SUCESS 		= "SUCCESS";
+	public static final String FAIL 		= "FAIL";
+	public static final String ADULT 		= "ADULT";
+	public static final String CHILD 		= "CHILD";
+  
+  public static final String RESV_NAME_ID 		= "RESV_NAME_ID"     ;
+
+	// WSDL type
+	public static final String RESERVATION_WSDL  = "Reservation.asmx";
+	public static final String RESVADVANCED_WSDL = "ResvAdvanced.asmx";
+	public static final String NAME_ASMX         = "Name.asmx";
+
+	// action
+	public static final String NAME_LOOKUP_ACTION   = "/Name.wsdl#NameLookup";
+	public static final String FETCH_PROFILE_ACTION = "/Name.wsdl#FetchProfile";
+
 }

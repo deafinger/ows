@@ -14,7 +14,6 @@ import com.api.ows.common.exception.DataNotFoundException;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
-import com.api.ows.common.utill.ComponetObjectMapper;
 import com.api.ows.reservation.model.futureBookingSummary.FutureBookingSummaryBody;
 import com.api.ows.reservation.service.FutureBookingSummaryService;
 import com.api.ows.reservation.vo.request.FutureBookingSummaryReqVO;
@@ -41,14 +40,12 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class FutureBookingSummaryServiceImpl implements FutureBookingSummaryService {
 	
-	@Autowired
-	ComponetObjectMapper mapper;
 	
 	@Override
 	public Map<String, Object> doFutureBookingSummaryRequest(FutureBookingSummaryReqVO param) throws Exception {
 		//BodyModel 만들기
 		final FutureBookingSummaryBody setting = new FutureBookingSummaryBody(param);
-	
+
 		//SOAP 통신
 		final Map<String,Object> soapResultMap = new OWSSoapConnection().doSoapConnection(setting.getBody(), "/Reservation.wsdl#FutureBookingSummary","Reservation.asmx");
 		final Map<String,Object> status = U.get(soapResultMap, "FutureBookingSummaryResponse.Result");

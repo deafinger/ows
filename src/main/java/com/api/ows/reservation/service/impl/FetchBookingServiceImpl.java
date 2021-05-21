@@ -14,7 +14,6 @@ import com.api.ows.common.exception.DataNotFoundException;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
-import com.api.ows.common.utill.ComponetObjectMapper;
 import com.api.ows.reservation.model.fetchBooking.FetchBookingBody;
 import com.api.ows.reservation.service.FetchBookingService;
 import com.api.ows.reservation.vo.request.FetchBookingReqVO;

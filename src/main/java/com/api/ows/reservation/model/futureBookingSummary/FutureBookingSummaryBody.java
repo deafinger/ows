@@ -34,8 +34,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FutureBookingSummaryBody {
 	
+
 	private Map<String,Object> body;
-	
+
 	
 	@Builder
 	public FutureBookingSummaryBody(FutureBookingSummaryReqVO param) {
@@ -80,9 +81,5 @@ public class FutureBookingSummaryBody {
 		}
 		this.body=map;
 	}
-	
-	
-	
-	
 	
 }
