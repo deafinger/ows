@@ -40,7 +40,7 @@ public class MakePaymentBody {
 		U.set(map, "MakePaymentRequest.xmlns", CommonString.RESVADVANCED);
 		
 		U.set(map, "MakePaymentRequest.Posting", new HashMap<String,Object>());
-		U.set(map, "MakePaymentRequest.Posting.PostDate", CommonUtill.jodaDateFormat(param.getPostDate(), CommonString.BASICDATEFORM));
+		U.set(map, "MakePaymentRequest.Posting.PostDate", CommonUtill.jodaDateFormat(param.getPostDate(), CommonString.BASIC_DATE_FORM));
 		U.set(map, "MakePaymentRequest.Posting.ShortInfo", param.getShortInfo());
 		U.set(map, "MakePaymentRequest.Posting.LongInfo", param.getLongInfo());
 		U.set(map, "MakePaymentRequest.Posting.StationID", "KIOSK");
@@ -68,7 +68,7 @@ public class MakePaymentBody {
 		U.set(map, "MakePaymentRequest.CreditCardInfo.CreditCard.cardNumber.nodeValue", param.getCardNumber());
 		U.set(map, "MakePaymentRequest.CreditCardInfo.CreditCard.expirationDate", new HashMap<String,Object>());
 		U.set(map, "MakePaymentRequest.CreditCardInfo.CreditCard.expirationDate.xmlns", CommonString.COMMON);
-		U.set(map, "MakePaymentRequest.CreditCardInfo.CreditCard.expirationDate.nodeValue", CommonUtill.jodaDateFormat(param.getExpirationDate(), CommonString.BASICDATEFORM));
+		U.set(map, "MakePaymentRequest.CreditCardInfo.CreditCard.expirationDate.nodeValue", CommonUtill.jodaDateFormat(param.getExpirationDate(), CommonString.BASIC_DATE_FORM));
 		this.body = map;
 		
 	}

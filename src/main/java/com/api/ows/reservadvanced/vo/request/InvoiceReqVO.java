@@ -25,8 +25,8 @@ import lombok.Data;
 public class InvoiceReqVO {
 	@NotNull(message = "필수 입력값 입니다.")
 	@NotBlank(message = "값을 입력해야 합니다.")
-	private String resvNameId;
+	private String resvNameId;		// # resvNameId : 시스템 예약ID
 	@NotNull(message = "필수 입력값 입니다.")
 	@NotBlank(message = "값을 입력해야 합니다.")
-	private String hotelCode;
+	private String hotelCode;		// # hotelCode : 호텔코드
 }

@@ -10,6 +10,7 @@ import javax.management.AttributeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.ows.common.exception.DataNotFoundException;
 import com.api.ows.common.soap.CommonString;
 import com.api.ows.common.soap.OWSSoapConnection;
 import com.api.ows.common.utill.CommonUtill;
@@ -52,7 +53,7 @@ public class InvoiceServiceImpl implements InvoiceService{
 		log.info("status : {}",status );
 		List<InvoiceResVO> voList = new ArrayList<>();
 		//Vo 담기
-		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new AttributeNotFoundException(status.get("c:OperaErrorCode").toString());
+		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new DataNotFoundException(status.get("c:OperaErrorCode").toString());
 		
 		Map<String,Object> invoice = U.get(soapResultMap, "InvoiceResponse");
 		

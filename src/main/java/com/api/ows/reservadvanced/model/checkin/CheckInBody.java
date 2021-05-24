@@ -71,7 +71,7 @@ public class CheckInBody {
 		U.set(map, "CheckInRequest.CreditCardInfo.CreditCard.c:cardNumber", new HashMap<String,Object>());
 		U.set(map, "CheckInRequest.CreditCardInfo.CreditCard.c:cardNumber.nodeValue", param.getCardNumber());
 		U.set(map, "CheckInRequest.CreditCardInfo.CreditCard.c:expirationDate", new HashMap<String,Object>());
-		U.set(map, "CheckInRequest.CreditCardInfo.CreditCard.c:expirationDate.nodeValue", CommonUtill.jodaDateFormat(param.getExpirationDate(), CommonString.BASICDATEFORM));
+		U.set(map, "CheckInRequest.CreditCardInfo.CreditCard.c:expirationDate.nodeValue", CommonUtill.jodaDateFormat(param.getExpirationDate(), CommonString.BASIC_DATE_FORM));
 		
 		this.body=map;
 	}

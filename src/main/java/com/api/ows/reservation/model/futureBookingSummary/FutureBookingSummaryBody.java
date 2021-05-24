@@ -55,10 +55,10 @@ public class FutureBookingSummaryBody {
 			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.dataType", CommonString.ARRIVALDATE);
 			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate", new HashMap<String, Object>());
 			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate.xmlns", CommonString.HOTELLCOMMON);
-			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate.nodeValue", CommonUtill.jodaDateFormat(param.getEndDate(), CommonString.TBetween));
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.EndDate.nodeValue", CommonUtill.jodaDateFormat(param.getEndDate(), CommonString.T_BETWEEN));
 			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate", new HashMap<String, Object>());
 			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate.xmlns", CommonString.HOTELLCOMMON);
-			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate.nodeValue", CommonUtill.jodaDateFormat(param.getStartDate(), CommonString.TBetween));
+			U.set(map, "FutureBookingSummaryRequest.QueryDateRange.StartDate.nodeValue", CommonUtill.jodaDateFormat(param.getStartDate(), CommonString.T_BETWEEN));
 		}
 		
 		//AdditionalFilters
