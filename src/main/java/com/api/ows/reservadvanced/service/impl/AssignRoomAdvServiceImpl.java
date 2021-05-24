@@ -49,7 +49,7 @@ public class AssignRoomAdvServiceImpl implements AssignRoomAdvService{
 		if(status.get("-resultStatusFlag").equals(CommonString.FAIL)) throw new DataNotFoundException(status.get("c:OperaErrorCode").toString());
 		Map<String,Object> assign = U.get(soapResultMap, "AssignRoomAdvResponse");
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("assign",setVO(assign) );
+		result.put("Result",setVO(assign) );
 		return result; 
 	}
 	

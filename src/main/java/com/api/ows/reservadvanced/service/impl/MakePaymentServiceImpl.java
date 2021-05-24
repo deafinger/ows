@@ -60,7 +60,7 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 		Map<String,Object> makePayment = U.get(soapResultMap, "MakePaymentResponse");
 		
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("makePayment",setVO(makePayment) );
+		result.put("Result",setVO(makePayment) );
 		
 		return result;
 	}

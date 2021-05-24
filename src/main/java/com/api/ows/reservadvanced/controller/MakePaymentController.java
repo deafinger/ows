@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.ows.common.exception.BadParameterException;
 import com.api.ows.common.exception.DataNotFoundException;
 import com.api.ows.common.exception.ErrorCodes;
 import com.api.ows.common.utill.ValidationErrorsMessage;
@@ -45,7 +46,7 @@ public class MakePaymentController {
 	@PostMapping(path = "/payment")
 	public ResponseEntity<?> futureBookingSummaryRequest(@Valid @RequestBody MakePaymentReqVO param,Errors errors) throws Exception{
 		log.info("PATH :/reserAdvanced/make/payment");
-		if(errors.hasErrors())return ResponseEntity.badRequest().body(mes.getMessage(errors));
+		if(errors.hasErrors()) throw new BadParameterException(mes.getExceptionMessage(errors));
 		return ResponseEntity.ok().body(service.doMakePayment(param));
 	}
 

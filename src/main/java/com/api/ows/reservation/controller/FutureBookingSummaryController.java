@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.ows.common.exception.BadParameterException;
 import com.api.ows.common.utill.ValidationErrorsMessage;
 import com.api.ows.reservation.service.FutureBookingSummaryService;
 import com.api.ows.reservation.vo.request.FutureBookingSummaryReqVO;
@@ -54,9 +55,9 @@ public class FutureBookingSummaryController {
 	@PostMapping(path = "/booking")
 	public ResponseEntity<?> futureBookingSummaryRequest(@Valid @RequestBody FutureBookingSummaryReqVO param,Errors errors) throws Exception{
 		log.info("PATH :/reservation/future/booking");
-		if(errors.hasErrors())return ResponseEntity.badRequest().body(mes.getMessage(errors)); 
+		if(errors.hasErrors()) throw new BadParameterException(mes.getExceptionMessage(errors));  
 		else if(param.isNull()) { //is null Check
-			return ResponseEntity.badRequest().body("Empty Parameter");
+			throw new BadParameterException("모든 Parameter가 비어 있을 수 없습니다.");
 		}
 		return ResponseEntity.ok().body(service.doFutureBookingSummaryRequest(param));
 	}

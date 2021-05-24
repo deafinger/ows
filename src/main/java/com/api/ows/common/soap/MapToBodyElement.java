@@ -53,19 +53,24 @@ public class MapToBodyElement {
 	* @author 서민재
 	*/
 	public List<Element> firstMap(Map<String, Object> param) throws Exception{
-		
+		log.info("Body Model Map : {}",param);
 		List<Element> result = new ArrayList<Element>();
-		
-		Set entry = param.entrySet();
-		Iterator it = entry.iterator();
-		while(it.hasNext()) {
-			Map.Entry<String, Object> node = (Map.Entry<String, Object>)it.next();
-			Element first = this.doc.createElement(node.getKey());
-			Object value = node.getValue();
-			if(node.getValue() instanceof Map) {
-				first = new MapToBodyElement(this.doc, first).doNext((Map<String,Object>)value);
+		try {
+			Set entry = param.entrySet();
+			Iterator it = entry.iterator();
+			while(it.hasNext()) {
+				Map.Entry<String, Object> node = (Map.Entry<String, Object>)it.next();
+				Element first = this.doc.createElement(node.getKey());
+				Object value = node.getValue();
+				if(node.getValue() instanceof Map) {
+					first = new MapToBodyElement(this.doc, first).doNext((Map<String,Object>)value);
+				}
+				result.add(first);
 			}
-			result.add(first);
+		} catch (Exception e) {
+			log.info("Cause : {}", e.getCause());
+			log.info("Message : {}", e.getMessage());
+			throw new RuntimeException("Element Parsing Error");
 		}
 		return result;
 	}

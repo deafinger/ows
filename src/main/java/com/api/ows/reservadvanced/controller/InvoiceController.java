@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.ows.common.exception.BadParameterException;
 import com.api.ows.common.utill.ValidationErrorsMessage;
 import com.api.ows.reservadvanced.service.InvoiceService;
 import com.api.ows.reservadvanced.vo.request.InvoiceReqVO;
@@ -43,7 +44,7 @@ public class InvoiceController {
 	@PostMapping(path = "/request")
 	public ResponseEntity<?> futureBookingSummaryRequest(@Valid @RequestBody InvoiceReqVO param,Errors errors) throws Exception{
 		log.info("PATH :/reserAdvanced/invoice/request");
-		if(errors.hasErrors())return ResponseEntity.badRequest().body(mes.getMessage(errors)); 
+		if(errors.hasErrors()) throw new BadParameterException(mes.getExceptionMessage(errors));
 		return ResponseEntity.ok().body(service.doInvoice(param));
 	}
 }

@@ -47,7 +47,7 @@ public class ReleaseRoomAdvServiceImpl implements ReleaseRoomAdvService{
 		Map<String,Object> releaseRoom = U.get(soapResultMap, "ReleaseRoomAdvResponse");
 		
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("releaseRoom",setVO(releaseRoom) );
+		result.put("Result",setVO(releaseRoom) );
 		
 		return result;
 	}

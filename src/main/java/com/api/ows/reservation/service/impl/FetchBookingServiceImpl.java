@@ -58,7 +58,7 @@ public class FetchBookingServiceImpl implements FetchBookingService{
 		//Vo 담기
 		Object reservations = U.get(soapResultMap, "FetchBookingResponse.HotelReservation");
 		Map<String, Object> result = new HashMap<String,Object>();
-		result.put("reservation",setVO(reservations));
+		result.put("Result",setVO(reservations));
 		return result;
 	}
 	

@@ -43,4 +43,18 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(apiException, apiException.getHttpStatus());
     }
+    /**
+     * ReqVO의 Field Validation Exception
+     * Repository에서 데이터 조회 후, 데이터가 존재하지 않는 경우 orElseThrow를 활용해서 처리 함
+     *
+     * 에러별 코드와 설명은 {@link ErrorCodes}를 참조
+     */
+    @ExceptionHandler({BadParameterException.class})
+    public ResponseEntity<Object> requestParameterException(final RuntimeException ex, final WebRequest request) {
+
+        String instance = ((ServletWebRequest) request).getRequest().getRequestURI();
+        ApiException apiException = new ApiException(ErrorCodes.ERR_BAD_PARAMETER_CD, ErrorCodes.ERR_BAD_PARAMETER_MSG, HttpStatus.BAD_REQUEST, ex.getMessage(), instance);
+
+        return new ResponseEntity<>(apiException, apiException.getHttpStatus());
+    }
 }
